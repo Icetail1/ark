@@ -12,30 +12,36 @@ public class CardManagement : Singleton<CardManager>
     //判断卡组中已有卡牌的信息
 
     // 总共有多少张卡牌
-    public int sumCardNum = 15;
+    public int SumCardNum = 15;
     //总共抽多少张卡牌
-    public int sumDrugNum = 5;
+    public int SumDrugNum = 5;
+    //已经抽了多少张卡牌
+    public int AlreadyDrugNum = 0;
+    
+    
     //还剩多少张卡牌
-    public int remainCardNum;
+    public int RemainCardNum;
     //基础牌数量
-    private int baseCardNum;
+    private int BaseCardNum;
     //技能卡数量
-    private int skillCardNum;
+    private int SkillCardNum;
+    
+    
     
     public Card[] preSkillType;
 
-    public Card[] preEnventType;
+    public Card[] preBaseType;
     //所有卡牌存放的地方
     public Card[] cardGroup;
 
     //用来抽牌的列表
-    public List<int> CardToDrugList;
+    public List<int> cardToDrugList;
+    public List<int> AlreadyInHand;
     //用来弃牌的列表
-    public List<Card> CardToLoseList;
+    public List<Card> cardToLoseList;
     
-    public AudioSource DrawCardAuido;
-    
-    public GameObject CardToSeePrefab;
+
+    public GameObject cardToSeePrefab;
     //用来存储卡牌序号
     List<int> listNewCard ;
     //TODO  
@@ -54,10 +60,11 @@ public class CardManagement : Singleton<CardManager>
     }
 
 public void SkillCardInformation()
-    {
+  
+  {
 
-        preEnventType = new Card[1000];
         preSkillType = new Card[1000];
+        preBaseType = new Card[1000];
         
         preSkillType[0] = new Card(Card.CardType.SkillCard, "一键背水", "使当前生命值变为1，背水效果翻倍，本回合无敌", 1);
 
@@ -71,13 +78,26 @@ public void SkillCardInformation()
 
         preSkillType[5] = new Card(Card.CardType.SkillCard, "战吼", "本场战斗生命上限翻倍(当前生命值不会受到影响)", 6);
 
-        preSkillType[6] = new Card(Card.CardType.SkillCard, "生命吸取", "获得吸血1", 3, 7);
+        preSkillType[6] = new Card(Card.CardType.SkillCard, "生命吸取", "获得吸血1", 7);
 
-        preSkillType[7] = new Card(Card.CardType.SkillCard, "包扎", "消耗<color=yellow>6</color>点怒气,恢复<color=red>20</color>点生命值", 0, 9);
+        preSkillType[7] = new Card(Card.CardType.SkillCard, "破釜沉舟", "造成9次背水效果的伤害，回合结束后即死", 8);
 
-        preSkillType[8] = new Card(Card.CardType.SkillCard, "包扎", "消耗<color=yellow>6</color>点怒气,恢复<color=red>20</color>点生命值", 0, 9);
+        preSkillType[8] = new Card(Card.CardType.SkillCard, "融合", "这张卡牌获得你所有基础卡的效果以及其附加武器效果", 9);
       
-
+        preBaseType[0] = new Card(Card.CardType.SkillCard, "暗属性攻击", "造成5点伤害/n "+"todo 附加效果/n"+"todo 武器效果/n", 10);
+        
+        preBaseType[1] = new Card(Card.CardType.SkillCard, "暗属性攻击", "造成5点伤害/n "+"todo 附加效果/n"+"todo 武器效果/n", 11);
+        
+        preBaseType[2] = new Card(Card.CardType.SkillCard, "暗属性攻击", "造成5点伤害/n "+"todo 附加效果/n"+"todo 武器效果/n", 12);
+        
+        preBaseType[3] = new Card(Card.CardType.SkillCard, "防御", "获得5点护甲/n "+"todo 附加效果/n"+"todo 武器效果/n", 13);
+        
+        preBaseType[4] = new Card(Card.CardType.SkillCard, "防御", "获得5点护甲/n "+"todo 附加效果/n"+"todo 武器效果/n", 14);
+        
+        preBaseType[5] = new Card(Card.CardType.SkillCard, "防御", "获得5点护甲/n "+"todo 附加效果/n"+"todo 武器效果/n", 15);
+        
+        
+        
     }
 
     public void CreatOriginalCardGroup(PlayManager.HeroCareer heroCareer)
@@ -88,15 +108,14 @@ public void SkillCardInformation()
         CardGroup = new Card[200];
         if (heroCareer == PlayManager.HeroCareer.Warrior)
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 6; i++)
             {
-                CardGroup[i] = new Card(Card.CardType.AtkCard, "打击", "对目标造成<color=red>3(+ATK)</color>点伤害,获得<color=yellow>3</color>点怒气", 3, 0);
+                CardGroup[i] = preBaseType[i]；
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 9; i++)
             {
-                CardGroup[i + 8] = preSkillType[i];
+                CardGroup[i + 6] = preSkillType[i];
             }
-            CardGroup[13] = preEnventType[2];
         }
         else if (heroCareer == PlayManager.HeroCareer.Master)
         {
@@ -113,36 +132,37 @@ public void SkillCardInformation()
 
 
     }
-    public void InitlistNewCard()
-    {
-        for (int j = 5; j < 8; j++)
-        {
-            listNewCard.Add(j);
-        }
-    }
+// todo 增加卡牌
+//     public void InitlistNewCard()
+//     {
+//         for (int j = 5; j < 8; j++)
+//         {
+//             listNewCard.Add(j);
+//         }
+//     }
 
 
   
-    /// <summary>
-    /// 
-    /// </summary>
-    public void AddaNewCardToGroup()
-    {
-        InitlistNewCard();
-        int i= Random.Range(0,listNewCard.Count);
+//     /// <summary>
+//     /// 
+//     /// </summary>
+//     public void AddaNewCardToGroup()
+//     {
+//         InitlistNewCard();
+//         int i= Random.Range(0,listNewCard.Count);
 
-        ReStartCardList();
+//         ReStartCardList();
 
-        CardToDrugList.Add(HowManyCard++);
-        Debug.Log("preSkillType[listNewCard[i]]:"+listNewCard[i]);
-        CardGroup[HowManyCard-1] = preSkillType[listNewCard[i]];
-        listNewCard.Remove(listNewCard[i]);
-    }
+//         CardToDrugList.Add(HowManyCard++);
+//         Debug.Log("preSkillType[listNewCard[i]]:"+listNewCard[i]);
+//         CardGroup[HowManyCard-1] = preSkillType[listNewCard[i]];
+//         listNewCard.Remove(listNewCard[i]);
+//     }
 
     public void CreatCardPrefeb()
     {
         //抽牌
-        if (HowManyCardRemain >= HowManytoDrug)
+        if (RemainCardNum!=0)
         {
 
             DrugCard();
@@ -162,21 +182,33 @@ public void SkillCardInformation()
     /// </summary>
     private void DrugCard()
     {
-        for (int i = 0; i < HowManytoDrug; i++)
+    for(AlreadyDrugNum=0;AlreadyDrugNum< SumDrugNum;AlreadyDrugNum++){
+        if(RemainCardNum!=0)
         {
             //随机数j
             int j = Random.Range(0, CardToDrugList.Count);
             //List中的第j+1个元素对应的值 (j+1)
             CreatCard(i, CardToDrugList[j]);
             //剩余卡牌数-1
-            HowManyCardRemain--;
+            RemainCardNum--;
             //从抽牌List中移除掉这张牌
             CardToDrugList.Remove(CardToDrugList[j]);
-
-
-
+            AlreadyInHand.add(j)
+        }else
+        {
+        ReStartCardList();
+        ReStartLoseCardList();
+        int j = Random.Range(0, CardToDrugList.Count);
+         //List中的第j+1个元素对应的值 (j+1)
+            CreatCard(i, CardToDrugList[j]);
+            //剩余卡牌数-1
+            RemainCardNum--;
+            //从抽牌List中移除掉这张牌
+            CardToDrugList.Remove(CardToDrugList[j]);
+            AlreadyInHand.add(j)
+        
         }
-        DrawCardAuido.Play();
+        }
     }
 
     public void CreatCard(int i, int Rand)
@@ -199,15 +231,18 @@ public void SkillCardInformation()
     /// </summary>
     private void ReStartCardList()
     {
-        remainCardNum = sumCardNum;
+        RemainCardNum = SumCardNum - AlreadyDrugNum;
         //清空已有的LIST
         CardToDrugList.Clear();
 
-        for (int i = 0; i < HowManyCard; i++)
+        for (int i = 0; i < SumCardNum; i++)
         {
             CardToDrugList.Add(i);
         }
-
+        for (int j = 0; j < AlreadyDrugNum; j++)
+        {
+            CardToDrugList.remove(AlreadyInHand[j]);
+        }
             GameObject.Find("Event").GetComponent<MainSceneEvent>().HowManyCardHadUsed = 0;
 
     }

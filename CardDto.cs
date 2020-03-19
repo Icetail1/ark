@@ -1,4 +1,4 @@
-public class Card
+public class CardDto
 {
     //card背景图片
     public int imageIndex;

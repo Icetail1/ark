@@ -20,9 +20,9 @@ public class CardInstance : MonoBehaviour {
 
     public Text cardInfomation;
 
-    public Image SmallImage;
+    public Image smallImage;
 
-    public int CardID;
+    public int cardID;
     
  
     public void Start()
@@ -82,12 +82,6 @@ public class CardInstance : MonoBehaviour {
                 break;
             case 15:
                 SmallImage.sprite = smallImg[10];
-                break;
-            case 16:
-                SmallImage.sprite = smallImg[11];
-                break;
-            case 17:
-                SmallImage.sprite = smallImg[12];
                 break;
         }
     }

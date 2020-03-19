@@ -15,7 +15,6 @@ public class Hero : MonoBehaviour
 
     public int HP;
     public int MP;
-    public int ATK;
     public int DEF;
     public int Present_HP;
     public int Present_MP;
@@ -49,22 +48,12 @@ public class Hero : MonoBehaviour
 
     public void CreatHero()
     {
-        if (this.gameObject.tag == "Hero")
-        {
             HP = PlayManager.Instance.limit_HP;
             MP = PlayManager.Instance.limit_MP;
-            ATK = PlayManager.Instance.Attack;
             DEF = PlayManager.Instance.Defend;
-            Present_HP = HP;
-            Present_MP = 0;
-        }
-        if (this.gameObject.tag == "EnemyHero")
-        {
-            HP = 100 + (GameManager.Instance.GameLevel ) * 25;
-            Present_HP = HP;
-            ATK = GameManager.Instance.GameLevel ;
-            DEF = GameManager.Instance.GameLevel;
-        }
+            Present_HP = PlayManager.Instance.Present_HP;
+            Present_MP = PlayManager.Instance.Present_MP;
+        
     }
 
     private void Update()

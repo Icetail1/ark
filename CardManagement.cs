@@ -53,43 +53,30 @@ public class CardManagement : Singleton<CardManager>
         isMouseAleardyDown = false;
     }
 
-public void SkillandEnventCardInformation()
+public void SkillCardInformation()
     {
 
         preEnventType = new Card[1000];
         preSkillType = new Card[1000];
         
-        preSkillType[0] = new Card(Card.CardType.SkillCard, "挥斩", "消耗<color=yellow>15</color>点怒气,对全部敌人（不包括城堡）造成<color=red>4(+ATK)</color>点伤害", 4, 1);
+        preSkillType[0] = new Card(Card.CardType.SkillCard, "一键背水", "使当前生命值变为1，背水效果翻倍，本回合无敌", 1);
 
-        preSkillType[1] = new Card(Card.CardType.SkillCard, "搏命", "消耗<color=yellow>9</color>点怒气,对敌方英雄造成<color=red>3(+ATK)</color>点伤害,我方英雄每损失5点生命则造成伤害+<color=red>2</color>", 3, 2);
+        preSkillType[1] = new Card(Card.CardType.SkillCard, "利刃附魔", "使所有基础攻击牌获得背水1", 2);
 
-        preSkillType[2] = new Card(Card.CardType.SkillCard, "双杀", "消耗<color=yellow>10</color>点怒气，对敌方英雄造成<color=red>5(+ATK)</color>的伤害,对任意一个小兵造成<color=red>2(+ATK)</color>点伤害", 5, 3);
+        preSkillType[2] = new Card(Card.CardType.SkillCard, "嘲讽", "获得10+"+playermanager.instance.Defend+"点防御力，当前cut值翻倍", 3);
+    
+        preSkillType[3] = new Card(Card.CardType.SkillCard, "突刺", "消耗50%当前生命值（"+playermanager.instance.persent_HP*0.5+"），造成3倍已消耗生命值的伤害", 4);
 
-        //BOSS
-        preSkillType[3] = new Card(Card.CardType.SkillCard, "拔刀", "消耗<color=yellow>8</color>点怒气,随机攻击3个敌人，对每个敌人造成<color=red>5(+ATK)</color>点伤害", 5, 4);
+        preSkillType[4] = new Card(Card.CardType.SkillCard, "生命分流", "消耗2点生命值,抽一张牌，回响", 5);
 
-        preSkillType[4] = new Card(Card.CardType.SkillCard, "穿刺", "消耗<color=yellow>10</color>点怒气,造成英雄最大生命值<color=red>10％</color>的伤害(*对城堡无效)", 0, 5);
+        preSkillType[5] = new Card(Card.CardType.SkillCard, "战吼", "本场战斗生命上限翻倍(当前生命值不会受到影响)", 6);
 
-        preSkillType[5] = new Card(Card.CardType.SkillCard, "斩杀", "消耗<color=yellow>10</color>点怒气,造成<color=red>3点(+ATK)</color>伤害。若敌人生命值<15％，直接杀死对方(*对城堡无效)", 3, 6);
-
-        preSkillType[6] = new Card(Card.CardType.SkillCard, "攻城", "消耗<color=yellow>8</color>点怒气,对敌方城堡造成<color=red>15(+ATK)</color>点伤害", 3, 7);
+        preSkillType[6] = new Card(Card.CardType.SkillCard, "生命吸取", "获得吸血1", 3, 7);
 
         preSkillType[7] = new Card(Card.CardType.SkillCard, "包扎", "消耗<color=yellow>6</color>点怒气,恢复<color=red>20</color>点生命值", 0, 9);
 
+        preSkillType[8] = new Card(Card.CardType.SkillCard, "包扎", "消耗<color=yellow>6</color>点怒气,恢复<color=red>20</color>点生命值", 0, 9);
       
-        //preSkillType[8] = new Card(Card.CardType.SkillCard, "破血", "消耗6点怒气,每回合造成3伤害，持续2回合", 3, 10);
-//      preEnventType[0] = new Card(Card.CardType.EventCard, "陷阱", "在敌方行军路上放置陷阱，若敌人进入，则持续掉血", 1, 11);
-//      preEnventType[1] = new Card(Card.CardType.EventCard, "迷途", "改变天气，敌方暂停一回合", 0, 12);
-//      preEnventType[2] = new Card(Card.CardType.EventCard, "急速", "恢复3点行动力", 0, 13);
-
-
-        preEnventType[0] = new Card(Card.CardType.EventCard, "神眷", "恢复<color=red>50％</color>已损失生命值", 0, 14);
-        preEnventType[1] = new Card(Card.CardType.EventCard, "重整", "获得你当前<color=red>防御力</color>值的恢复", 0, 15);
-        preEnventType[2] = new Card(Card.CardType.EventCard, "嗜血", "随机杀死一名小兵，获得其生命值的恢复", 0, 16);
-        preEnventType[3] = new Card(Card.CardType.EventCard, "出击", "对敌方英雄造成我方小兵攻击力<color=red>总和</color>的伤害", 0, 17);
-
-//      preEnventType[4] = new Card(Card.CardType.EventCard, "静养", "下一回合恢复最大生命值，并无法行动", 0, 15);
-
 
     }
 
@@ -221,18 +208,8 @@ public void SkillandEnventCardInformation()
             CardToDrugList.Add(i);
         }
 
-        if (GameManager.Instance.WhichScene == GameManager.Scene.Test)
-        {
             GameObject.Find("Event").GetComponent<MainSceneEvent>().HowManyCardHadUsed = 0;
-        }
-        if (GameManager.Instance.WhichScene == GameManager.Scene.Test1)
-        {
-            GameObject.Find("Event").GetComponent<MainSceneEvent>().HowManyCardHadUsed = 0;
-        }
-        if (GameManager.Instance.WhichScene == GameManager.Scene.Test2)
-        {
-            GameObject.Find("Event").GetComponent<MainSceneEvent>().HowManyCardHadUsed = 0;
-        }
+
     }
 
 

@@ -264,7 +264,59 @@ public void SkillCardInformation()
         }
         
     }
+    private void UndemageCard(CardDto card)
+    {
+           switch(card.CardID)
+            {
+            case 1:     
+            PlayYiJianBeiShui(); 
+            break;
+            
+            case 2:
+            PlayLiRenFuMo(); 
+            break;
+            
+            case 3:
+            PlayGuard(); 
+            break;
+            
+            case 5:
+            PlayShengMingFenLiu(); 
+            break;
+            
+            case 6:           
+            PlayZhanhou();
+            break;
 
+            case 7:           
+            PlayAtk_3();
+            break;
+            
+            case 9:           
+            PlayAtk_3();
+            break;
+            
+            case 11:           
+            PlayAtk_3();
+            break;
+            
+            case 12:           
+            PlayAtk_3();
+            break;
+            
+            case 13:           
+            PlayAtk_3();
+            break;
+            
+            case 14:           
+            PlayAtk_3();
+            break;
+            
+            case 15:           
+            PlayAtk_3();
+            break;
+            }
+    }
 
 
 }

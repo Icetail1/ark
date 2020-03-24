@@ -5,7 +5,7 @@ public class WeaponDto
     //weapon类型
     public enum Weapons { choushan, yezishu }; 
     //判断当前何种卡牌
-    public WeaponType whichWeapon;  
+    public Weapons whichWeapon;  
     //weapon名字
     public string WeaponTitle = "";
     //weapon介绍
@@ -13,7 +13,7 @@ public class WeaponDto
     //用一个ID来设计weapon的功能（抽象事件牌技能）
     public int weaponID;
 
-    public WeaponDto(WeaponType type, string WeaponTitle, string WeaponIntro, int weaponID)
+    public WeaponDto(Weapons type, string WeaponTitle, string WeaponIntro, int weaponID)
     {
 
 

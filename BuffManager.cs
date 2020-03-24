@@ -6,7 +6,7 @@ using DG.Tweening;
 public class BuffManager : Singleton<CardManager>
 {
     // 全局背水buff
-    public int SumBeiShui = 0;
+    public int SumBeiShui = 1;
     // 全局吸血buff
     public int SumXiXue = 0;
     // 战斗中背水buff

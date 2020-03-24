@@ -329,6 +329,26 @@ public void SkillCardInformation()
     WeaponManager.Instance.ATK3_weapon =WeaponManager.Instance.preWeaponSet[0];
     DisappearCard.Add(2);
     }
+     private void　PlayGuard()
+    {
+   　PlayerManager.Instance.Defence = PlayerManager.Instance.Defence + 10 ;
+     BuffManager.Instance.Cut = 0.5;
+    }
+     private void　PlayShengMingFenLiu()
+    {//储存当前抽卡数
+     int i = SumDrugNum;
+   　SumDrugNum= 1;
+     this.DrugCard();
+     PlayerManager.Instance.persent_HP = PlayerManager.Instance.persent_HP - 2 ;
+     SumDrugNum=i;
+    }
+    private void　PlayZhanhou()
+    {
+    　PlayerManager.Instance.HP = PlayerManager.Instance.HP * 2;
+    }
+    private void　PlayShengMingXiQu()
+    {
+    　BuffManager.Instance.XiXue = BuffManager.Instance.XiXue + 1;
+    }
     
-
 }

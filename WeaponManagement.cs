@@ -20,12 +20,12 @@ public class WeaponManagement : Singleton<WeaponManagement>
 
     }
     
-    public WeaponDto ATK1_weapon;
-    public WeaponDto ATK2_weapon;
-    public WeaponDto ATK3_weapon;
-    public WeaponDto Defence1_weapon;
-    public WeaponDto Defence2_weapon;
-    public WeaponDto Defence3_weapon;
+    public WeaponDto ATK1_weapon= preWeaponSet[0];
+    public WeaponDto ATK2_weapon= preWeaponSet[0];
+    public WeaponDto ATK3_weapon= preWeaponSet[0];
+    public WeaponDto Defence1_weapon =preWeaponSet[1];
+    public WeaponDto Defence2_weapon =preWeaponSet[1];
+    public WeaponDto Defence3_weapon =preWeaponSet[1];
 
 
 

@@ -63,7 +63,7 @@ public class Lucyfa : MonoBehaviour
     }
     public void PlayPoFuChenZhou()
     {
-      float Demage = (Buffmanager.instance.BattleBeiShui) * (Present_HP-playermanager.instance.persent_HP)*9
+      float Demage = (Buffmanager.instance.BattleBeiShui) * (playermanager.instance.HP-playermanager.instance.persent_HP)*9
       Present_HP =(int)(Present_HP - Demage) ;
       playermanager.instance.persent_HP =playermanager.instance.persent_HP + Buffmanager.instance.BattleXiXue * Demage ;
       playermanager.instance.turnoverdie = true;

@@ -61,7 +61,7 @@ public class Lucyfa : MonoBehaviour
     }
     public void PlayPoFuChenZhou()
     {
-      Present_HP = Present_HP - (Buffmanager.instance.BattleBeiShui * (Present_HP-playermanager.instance.persent_HP)*9);
+      Present_HP = Present_HP - ((Buffmanager.instance.BattleBeiShui) * (Present_HP-playermanager.instance.persent_HP)*9);
       playermanager.instance.turnoverdie = true;
       UIUpdate();
     }

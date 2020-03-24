@@ -55,13 +55,16 @@ public class Lucyfa : MonoBehaviour
     }
     public void PlayTsukiSasu()
     {
-      Present_HP = Present_HP - (playermanager.instance.persent_HP * 0.5 * 3);
-      playermanager.instance.persent_HP = playermanager.instance.persent_HP * 0.5;
+      float Demage = playermanager.instance.persent_HP * 0.5 * 3;
+      Present_HP = Present_HP - Demage;
+      playermanager.instance.persent_HP = playermanager.instance.persent_HP * 0.5 + Buffmanager.instance.BattleXiXue * Demage;
       UIUpdate();
     }
     public void PlayPoFuChenZhou()
     {
-      Present_HP = Present_HP - ((Buffmanager.instance.BattleBeiShui) * (Present_HP-playermanager.instance.persent_HP)*9);
+      float Demage = (Buffmanager.instance.BattleBeiShui) * (Present_HP-playermanager.instance.persent_HP)*9
+      Present_HP =(int)(Present_HP - Demage) ;
+      playermanager.instance.persent_HP =playermanager.instance.persent_HP + Buffmanager.instance.BattleXiXue * Demage ;
       playermanager.instance.turnoverdie = true;
       UIUpdate();
     }

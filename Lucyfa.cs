@@ -58,6 +58,7 @@ public class Lucyfa : MonoBehaviour
     {
       float Demage = playermanager.instance.persent_HP * 0.5 * 3;
       Present_HP = Present_HP - Demage;
+      //自身吸血
       playermanager.instance.persent_HP = playermanager.instance.persent_HP * 0.5 + Buffmanager.instance.BattleXiXue * Demage;
       UIUpdate();
     }
@@ -65,13 +66,16 @@ public class Lucyfa : MonoBehaviour
     {
       float Demage = (Buffmanager.instance.BattleBeiShui) * (playermanager.instance.HP-playermanager.instance.persent_HP)*9
       Present_HP =(int)(Present_HP - Demage) ;
+      //自身吸血
       playermanager.instance.persent_HP =playermanager.instance.persent_HP + Buffmanager.instance.BattleXiXue * Demage ;
+      //回合结束后死亡
       playermanager.instance.turnoverdie = true;
       UIUpdate();
     }
     public void PlayAtk_1()
     {
       float Demage;
+      //判断是否装备武器
       if(WeaponManagement.Instance.WeaponIsOnATK1)
       {
          switch(WeaponManagement.Instance.ATK1_weapon.weaponID)
@@ -85,6 +89,7 @@ public class Lucyfa : MonoBehaviour
         Demage = 5f;
       }
       Present_HP =(int)(Present_HP - Demage) ;
+      //自身吸血
       playermanager.instance.persent_HP =playermanager.instance.persent_HP + Buffmanager.instance.BattleXiXue * Demage ;
       UIUpdate();
     }

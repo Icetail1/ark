@@ -15,9 +15,9 @@ public class WeaponManagement : Singleton<WeaponManagement>
     void Start()
     {
         preWeaponSet = new WeaponDto[100];
-        preWeaponSet[0] = new WeaponDto(WeaponDto.Weapons.ATK, "仇闪", "背水1", 1);
+        preWeaponSet[0] = new WeaponDto(WeaponDto.Weapons.ATK, "仇闪", "额外造成当前背水值的伤害", 1);
 
-        preWeaponSet[1] = new WeaponDto(WeaponDto.Weapons.Defence, "椰子树", "获得50cut", 2);
+        preWeaponSet[1] = new WeaponDto(WeaponDto.Weapons.Defence, "椰子树", "额外获得50cut", 2);
 
     }
     

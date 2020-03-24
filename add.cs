@@ -16,7 +16,7 @@ return to gameobject first place
 }else(
 if(Input.mousePosition.y>220)
 {
-CardOn
+UndemageCard
 DO3d
 movetolosscard=todo
 destroy this card

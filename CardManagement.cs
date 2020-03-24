@@ -37,6 +37,8 @@ public class CardManagement : Singleton<CardManager>
     //用来抽牌的列表
     public List<int> cardToDrugList;
     public List<int> AlreadyInHand;
+    //消失牌表
+    public List<int> DisappearCard;
     //用来弃牌的列表
     public List<Card> cardToLoseList;
     
@@ -68,7 +70,7 @@ public void SkillCardInformation()
         
         preSkillType[0] = new Card(Card.CardType.SkillCard, "一键背水", "使当前生命值变为1，背水效果翻倍，本回合无敌", 1);
 
-        preSkillType[1] = new Card(Card.CardType.SkillCard, "利刃附魔", "使所有基础攻击牌装备上仇闪，消失", 2);
+        preSkillType[1] = new Card(Card.CardType.SkillCard, "利刃附魔", "使所有基础攻击牌获得背水1", 2);
 
         preSkillType[2] = new Card(Card.CardType.SkillCard, "嘲讽", "获得10+"+playermanager.instance.Defend+"点防御力，当前cut值翻倍", 3);
     
@@ -243,6 +245,10 @@ public void SkillCardInformation()
         {
             CardToDrugList.remove(AlreadyInHand[j]);
         }
+        for (int h = 0; h < DisappearCard.count; h++)
+        {
+            CardToDrugList.remove(AlreadyInHand[h]);
+        }
             GameObject.Find("Event").GetComponent<MainSceneEvent>().HowManyCardHadUsed = 0;
 
     }
@@ -309,6 +315,20 @@ public void SkillCardInformation()
             break;
             }
     }
-
+    private void　PlayYiJianBeiShui()
+    {
+     PlayerManager.Instance.persent_HP = 1;
+     PlayerManager.Instance.IsWuDi = true;
+     BuffManager.Instance.BattleBeiShui=BuffManager.Instance.BattleBeiShui*2;
+    
+    }
+    private void　PlayLiRenFuMo()
+    {
+    WeaponManager.Instance.ATK1_weapon =WeaponManager.Instance.preWeaponSet[0];
+    WeaponManager.Instance.ATK2_weapon =WeaponManager.Instance.preWeaponSet[0];
+    WeaponManager.Instance.ATK3_weapon =WeaponManager.Instance.preWeaponSet[0];
+    DisappearCard.Add(2);
+    }
+    
 
 }

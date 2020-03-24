@@ -1,0 +1,37 @@
+public class WeaponDto
+{
+    //weapon图片
+    public int imageIndex;
+    //weapon类型
+    public enum Weapons { choushan, yezishu }; 
+    //判断当前何种卡牌
+    public WeaponType whichWeapon;  
+    //weapon名字
+    public string WeaponTitle = "";
+    //weapon介绍
+    public string WeaponIntro = "";
+    //用一个ID来设计weapon的功能（抽象事件牌技能）
+    public int weaponID;
+
+    public WeaponDto(WeaponType type, string WeaponTitle, string WeaponIntro, int weaponID)
+    {
+
+
+        this.WeaponTitle = WeaponTitle;
+        this.WeaponIntro = WeaponIntro;
+        this.whichWeapon = type;
+        this.weaponID = weaponID;
+        if (type == WeaponType.choushan)
+        {
+
+            ImageIndex = 0;
+        }
+        if (type == WeaponType.yezishu)
+        {
+
+            ImageIndex = 1;
+        }
+    }
+
+
+}

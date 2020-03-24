@@ -85,6 +85,7 @@ public class Lucyfa : MonoBehaviour
         Demage = 5f;
       }
       Present_HP =(int)(Present_HP - Demage) ;
+      playermanager.instance.persent_HP =playermanager.instance.persent_HP + Buffmanager.instance.BattleXiXue * Demage ;
       UIUpdate();
     }
     public void PlayAtk_2()
@@ -103,6 +104,7 @@ public class Lucyfa : MonoBehaviour
         Demage = 5f;
       }
       Present_HP =(int)(Present_HP - Demage) ;
+      playermanager.instance.persent_HP =playermanager.instance.persent_HP + Buffmanager.instance.BattleXiXue * Demage ;
       UIUpdate();
     }
     public void PlayAtk_3()
@@ -121,6 +123,7 @@ public class Lucyfa : MonoBehaviour
         Demage = 5f;
       }
       Present_HP =(int)(Present_HP - Demage) ;
+      playermanager.instance.persent_HP =playermanager.instance.persent_HP + Buffmanager.instance.BattleXiXue * Demage ;
       UIUpdate();
     }
     public void UIUpdate()

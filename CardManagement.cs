@@ -84,7 +84,7 @@ public void SkillCardInformation()
 
         preSkillType[7] = new Card(Card.CardType.SkillCard, "破釜沉舟", "造成9次背水效果的伤害，回合结束后即死", 8);
 
-        preSkillType[8] = new Card(Card.CardType.SkillCard, "融合", "这张卡牌获得你所有基础卡的效果以及其附加武器效果", 9);
+        preSkillType[8] = new Card(Card.CardType.SkillCard, "生命交换", "将自己的当前生命百分比与敌人相互转换，使用后移出卡组", 9);
       
         preBaseType[0] = new Card(Card.CardType.SkillCard, "暗属性攻击", "造成5点伤害/n "+"todo 附加效果/n"+"todo 武器效果/n", 10);
         
@@ -299,7 +299,7 @@ public void SkillCardInformation()
             break;
             
             case 9:           
-            PlayYuGo();
+            PlayExchange();
             break;
             
             case 13:           
@@ -339,7 +339,7 @@ public void SkillCardInformation()
      int i = SumDrugNum;
    　SumDrugNum= 1;
      this.DrugCard();
-     PlayerManager.Instance.persent_HP = PlayerManager.Instance.persent_HP - 2 ;
+     PlayerManager.Instance.persent_HP/ = PlayerManager.Instance.persent_HP - 2 ;
      SumDrugNum=i;
     }
     private void　PlayZhanhou()
@@ -350,5 +350,55 @@ public void SkillCardInformation()
     {
     　BuffManager.Instance.XiXue = BuffManager.Instance.XiXue + 1;
     }
+    private void PlayExchange()
+    {
+     float pacentP=PlayerManager.Instance.persent_HP/PlayerManager.Instance.HP;
+     float pacentE=GameObject.FindGameObjectWithTag("boss").GetComponent<Lucyfa>().Present_HP / GameObject.FindGameObjectWithTag("boss").GetComponent<Lucyfa>().HP
+     GameObject.FindGameObjectWithTag("boss").GetComponent<Lucyfa>().Present_HP = GameObject.FindGameObjectWithTag("boss").GetComponent<Lucyfa>().HP * pacentP;
+     PlayerManager.Instance.persent_HP = PlayerManager.Instance.HP * pacentE;
+     CardGroup.remove(9);
     
+    }
+    private void PlayDefence_1()
+    {
+      if(WeaponManagement.Instance.WeaponIsOnDefence1)
+      {
+           switch(WeaponManagement.Instance.Defence1_weapon.weaponID)
+            {
+              case 2:
+              BuffManager.Instance.Cut = 0.5;
+              
+            }
+      }
+      PlayerManager.Instance.Defence = PlayerManager.Instance.Defence + 5 ;
+    
+    }
+    private void PlayDefence_2()
+    {
+      if(WeaponManagement.Instance.WeaponIsOnDefence2)
+      {
+           switch(WeaponManagement.Instance.Defence2_weapon.weaponID)
+            {
+              case 2:
+              BuffManager.Instance.Cut = 0.5;
+              
+            }
+      }
+      PlayerManager.Instance.Defence = PlayerManager.Instance.Defence + 5 ;
+    
+    }
+    private void PlayDefence_3()
+    {
+      if(WeaponManagement.Instance.WeaponIsOnDefence3)
+      {
+           switch(WeaponManagement.Instance.Defence3_weapon.weaponID)
+            {
+              case 2:
+              BuffManager.Instance.Cut = 0.5;
+              
+            }
+      }
+      PlayerManager.Instance.Defence = PlayerManager.Instance.Defence + 5 ;
+    
+    }
 }

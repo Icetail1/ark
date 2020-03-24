@@ -289,31 +289,23 @@ public void SkillCardInformation()
             break;
 
             case 7:           
-            PlayAtk_3();
+            PlayShengMingXiQu();
             break;
             
             case 9:           
-            PlayAtk_3();
-            break;
-            
-            case 11:           
-            PlayAtk_3();
-            break;
-            
-            case 12:           
-            PlayAtk_3();
+            PlayYuGo();
             break;
             
             case 13:           
-            PlayAtk_3();
+            PlayDefence_1();
             break;
             
             case 14:           
-            PlayAtk_3();
+            PlayDefence_2();
             break;
             
             case 15:           
-            PlayAtk_3();
+            PlayDefence_3();
             break;
             }
     }

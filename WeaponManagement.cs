@@ -7,6 +7,7 @@ public class WeaponManagement : Singleton<WeaponManagement>
 {
     //预制武器信息
     public WeaponDto[]  preWeaponSet;
+    
 
 
     //TODO  
@@ -21,11 +22,18 @@ public class WeaponManagement : Singleton<WeaponManagement>
     }
     
     public WeaponDto ATK1_weapon= preWeaponSet[0];
+    public bool WeaponIsOnATK1 = true;
     public WeaponDto ATK2_weapon= preWeaponSet[0];
+    public bool WeaponIsOnATK2 = true;
     public WeaponDto ATK3_weapon= preWeaponSet[0];
+    public bool WeaponIsOnATK3 = true;
     public WeaponDto Defence1_weapon =preWeaponSet[1];
+    public bool WeaponIsOnDefence1 = true;
     public WeaponDto Defence2_weapon =preWeaponSet[1];
+    public bool WeaponIsOnDefence2 = true;
     public WeaponDto Defence3_weapon =preWeaponSet[1];
+    public bool WeaponIsOnDefence3 = true;
+
 
 
 

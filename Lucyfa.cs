@@ -89,11 +89,39 @@ public class Lucyfa : MonoBehaviour
     }
     public void PlayAtk_2()
     {
-
+     float Demage;
+      if(WeaponManagement.Instance.WeaponIsOnATK2)
+      {
+         switch(WeaponManagement.Instance.ATK2_weapon.weaponID)
+            {
+              case 1:
+              Demage = (Buffmanager.instance.BattleBeiShui) * (playermanager.instance.HP-playermanager.instance.persent_HP)
+      
+            }
+      }else
+      {
+        Demage = 5f;
+      }
+      Present_HP =(int)(Present_HP - Demage) ;
+      UIUpdate();
     }
     public void PlayAtk_3()
     {
-
+     float Demage;
+      if(WeaponManagement.Instance.WeaponIsOnATK3)
+      {
+         switch(WeaponManagement.Instance.ATK3_weapon.weaponID)
+            {
+              case 1:
+              Demage = (Buffmanager.instance.BattleBeiShui) * (playermanager.instance.HP-playermanager.instance.persent_HP)
+      
+            }
+      }else
+      {
+        Demage = 5f;
+      }
+      Present_HP =(int)(Present_HP - Demage) ;
+      UIUpdate();
     }
     public void UIUpdate()
     {

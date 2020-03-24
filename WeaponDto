@@ -3,7 +3,7 @@ public class WeaponDto
     //weapon图片
     public int imageIndex;
     //weapon类型
-    public enum Weapons { choushan, yezishu }; 
+    public enum Weapons { ATK, Defence }; 
     //判断当前何种卡牌
     public Weapons whichWeapon;  
     //weapon名字
@@ -21,12 +21,12 @@ public class WeaponDto
         this.WeaponIntro = WeaponIntro;
         this.whichWeapon = type;
         this.weaponID = weaponID;
-        if (type == WeaponType.choushan)
+        if (type == WeaponType.ATK)
         {
 
             ImageIndex = 0;
         }
-        if (type == WeaponType.yezishu)
+        if (type == WeaponType.Defence)
         {
 
             ImageIndex = 1;

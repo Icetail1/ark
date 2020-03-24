@@ -30,28 +30,29 @@ public class Lucyfa : MonoBehaviour
 
     public void CardOnthis(Card card)
     {
-
-            if (card.CardID == 4)
+            switch(card.CardID)
             {
+            case 4:     
             PlayTsukiSasu(); 
-            }
-            if (card.CardID == 8)
-            {
+            break;
+            
+            case 8:
             PlayPoFuChenZhou(); 
-            }
-            if (card.CardID == 10)
-            {
+            break;
+            
+            case 10:
             PlayAtk_1(); 
-            }
-            if (card.CardID == 11)
-            {
+            break;
+            
+            case 11:
             PlayAtk_2(); 
+            break;
+            
+            case 12:           
+            PlayAtk_3();
+            break;
+
             }
-            if (card.CardID == 12)
-            {
-            PlayAtk_3; 
-            }
-      
     }
     public void PlayTsukiSasu()
     {
@@ -70,21 +71,15 @@ public class Lucyfa : MonoBehaviour
     }
     public void PlayAtk_1()
     {
-      Present_HP = Present_HP - (playermanager.instance.persent_HP * 0.5 * 3);
-      playermanager.instance.persent_HP = playermanager.instance.persent_HP * 0.5;
-      UIUpdate();
+
     }
     public void PlayAtk_2()
     {
-      Present_HP = Present_HP - (playermanager.instance.persent_HP * 0.5 * 3);
-      playermanager.instance.persent_HP = playermanager.instance.persent_HP * 0.5;
-      UIUpdate();
+
     }
     public void PlayAtk_3()
     {
-      Present_HP = Present_HP - (playermanager.instance.persent_HP * 0.5 * 3);
-      playermanager.instance.persent_HP = playermanager.instance.persent_HP * 0.5;
-      UIUpdate();
+
     }
     public void UIUpdate()
     {

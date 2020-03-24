@@ -68,7 +68,7 @@ public void SkillCardInformation()
         
         preSkillType[0] = new Card(Card.CardType.SkillCard, "一键背水", "使当前生命值变为1，背水效果翻倍，本回合无敌", 1);
 
-        preSkillType[1] = new Card(Card.CardType.SkillCard, "利刃附魔", "使所有基础攻击牌获得背水1", 2);
+        preSkillType[1] = new Card(Card.CardType.SkillCard, "利刃附魔", "使所有基础攻击牌装备上仇闪，消失", 2);
 
         preSkillType[2] = new Card(Card.CardType.SkillCard, "嘲讽", "获得10+"+playermanager.instance.Defend+"点防御力，当前cut值翻倍", 3);
     

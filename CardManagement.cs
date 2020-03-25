@@ -40,7 +40,7 @@ public class CardManagement : Singleton<CardManager>
     //消失牌表
     public List<int> DisappearCard;
     //用来弃牌的列表
-    public List<Card> cardToLoseList;
+    public List<int> cardToLoseList;
     
 
     public GameObject cardToSeePrefab;
@@ -257,9 +257,9 @@ public void SkillCardInformation()
     /// <summary>
     ///只有打出牌和弃牌的时候 添加到弃牌List中 
     /// </summary>
-    public void AddCardToLoseCardList(Card loseCard)
+    public void AddCardToLoseCardList(CardDto loseCard)
     {
-        CardToLoseList.Add(loseCard);
+        CardToLoseList.Add(loseCard.cardId-1);
     }
 
     private void ReStartLoseCardList()

@@ -40,8 +40,10 @@ public class CardManagement : Singleton<CardManager>
     //消失牌表
     public List<int> DisappearCard;
     //用来弃牌的列表
-    public List<int> cardToLoseList;
-    
+    public List<int> CardToLoseLisCt;
+    //准备加入弃牌的列表
+    public List<int> ReadyAddToLoseList;//好像是有一个当前手牌 如果有就用它drug→ReadyAddToLoseList.add play→remove turn over→CardToLoseLisCt.add(ReadyAddToLoseList[[)
+    //clear好像也做了
 
     public GameObject cardToSeePrefab;
     //用来存储卡牌序号
@@ -102,7 +104,7 @@ public void SkillCardInformation()
         
     }
 
-    public void CreatOriginalCardGroup(PlayManager.HeroCareer heroCareer)
+    publi/c void CreatOriginalCardGroup(PlayManager.HeroCareer heroCareer)
     {
         //TODO
         //根据传入的不同职业生成不同的初始卡组
@@ -254,22 +256,8 @@ public void SkillCardInformation()
     }
 
 
-    /// <summary>
-    ///只有打出牌和弃牌的时候 添加到弃牌List中 
-    /// </summary>
-    public void AddCardToLoseCardList(CardDto loseCard)
-    {
-        CardToLoseList.Add(loseCard.cardId-1);
-    }
+ 
 
-    private void ReStartLoseCardList()
-    {
-        if(CardToLoseList.Count>0)
-        {
-            CardToLoseList.Clear();
-        }
-        
-    }
     private void UndemageCard(CardDto card)
     {
            switch(card.CardID)

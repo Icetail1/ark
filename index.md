@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1 align="center">明日方舟抽卡模拟器</h1>
-<h2 align="center">UP池：塞雷亚,闪灵
+<h2 align="center">UP池：塞雷亚,闪灵</h2>
 <div>
 <form>
 

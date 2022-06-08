@@ -23,8 +23,7 @@ style=" background-repeat:no-repeat ;
 background-size:100% 100%;
 background-attachment: fixed;"
 >
-<p1 id=demo><br>
-</p1>
+<p id=demo><br></p>
 
 <script>
 var saileiya="<img style='border:5px solid #EEEE00' src='http://p2.qhimg.com/dr/150__/t012dd0eaddfe75600b.png' width='50' height='50'>"
@@ -564,19 +563,19 @@ function cleanup(){
 	}
 </script>
 <div align="center">
-<p2 id=nowa>
+<p id=nowa>
 
-</p2>
+</p>
 </div>
 <div align="center">
-<p3 id=brave>
+<p id=brave>
 
-</p3>
+</p>
 </div>
 <div align="center">
-<p4 id=dark>
+<p id=dark>
 
-</p4>
+</p>
 </div>
 
 </div>
